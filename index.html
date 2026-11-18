@@ -1,0 +1,183 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrillMaster POS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+    <aside class="sidebar">
+        <h2>🍔 GrillMaster</h2>
+        <p>Restaurant POS System</p>
+
+        <nav>
+            <button class="nav-btn active" data-page="dashboard">Dashboard</button>
+            <button class="nav-btn" data-page="pos">Point of Sale</button>
+            <button class="nav-btn" data-page="products">Products</button>
+            <button class="nav-btn" data-page="customers">Customers</button>
+            <button class="nav-btn" data-page="orders">Orders</button>
+        </nav>
+    </aside>
+
+    <main class="main">
+        <header class="topbar">
+            <div>
+                <h1 id="pageTitle">Dashboard</h1>
+                <p>Welcome to GrillMaster POS</p>
+            </div>
+            <span class="admin">Admin Panel</span>
+        </header>
+
+        <section id="dashboard" class="page active">
+            <div class="stats">
+                <div class="stat">
+                    <h3>Total Products</h3>
+                    <h2 id="totalProducts">0</h2>
+                </div>
+                <div class="stat">
+                    <h3>Total Customers</h3>
+                    <h2 id="totalCustomers">0</h2>
+                </div>
+                <div class="stat">
+                    <h3>Total Orders</h3>
+                    <h2 id="totalOrders">0</h2>
+                </div>
+                <div class="stat">
+                    <h3>Total Revenue</h3>
+                    <h2 id="totalRevenue">Rs. 0</h2>
+                </div>
+            </div>
+
+            <div class="panel">
+                <h2>Recent Orders</h2>
+                <div id="recentOrders"></div>
+            </div>
+        </section>
+
+        <section id="pos" class="page">
+            <div class="pos-layout">
+                <div class="panel">
+                    <h2>Food Menu</h2>
+                    <input id="menuSearch" placeholder="Search food...">
+
+                    <div class="categories">
+                        <button class="category active" data-category="All">All</button>
+                        <button class="category" data-category="Burgers">Burgers</button>
+                        <button class="category" data-category="Fries">Fries</button>
+                        <button class="category" data-category="Drinks">Drinks</button>
+                    </div>
+
+                    <div id="menuGrid" class="menu-grid"></div>
+                </div>
+
+                <div class="panel cart-panel">
+                    <h2>Current Order</h2>
+
+                    <label>Select Customer</label>
+                    <select id="orderCustomer"></select>
+
+                    <div id="cartItems"></div>
+
+                    <div class="bill">
+                        <p>Subtotal <span id="subtotal">Rs. 0</span></p>
+                        <p>Total <strong id="grandTotal">Rs. 0</strong></p>
+                    </div>
+
+                    <button class="primary full" id="checkoutBtn">Checkout</button>
+                    <button class="secondary full" id="clearCartBtn">Clear Cart</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="products" class="page">
+            <div class="panel">
+                <div class="section-heading">
+                    <h2>Product Management</h2>
+                    <button class="primary" id="addProductBtn">+ Add Product</button>
+                </div>
+
+                <input id="productSearch" placeholder="Search products...">
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Category</th>
+                                <th>Price</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="productTable"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section id="customers" class="page">
+            <div class="panel">
+                <div class="section-heading">
+                    <h2>Customer Management</h2>
+                    <button class="primary" id="addCustomerBtn">+ Add Customer</button>
+                </div>
+
+                <input id="customerSearch" placeholder="Search customers...">
+
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Phone</th>
+                                <th>Email</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="customerTable"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section id="orders" class="page">
+            <div class="panel">
+                <h2>Order Management</h2>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Customer</th>
+                                <th>Total</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="orderTable"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+
+<div id="modal" class="modal hidden">
+    <div class="modal-content">
+        <div class="section-heading">
+            <h2 id="modalTitle"></h2>
+            <button class="close-btn" id="closeModal">✕</button>
+        </div>
+        <form id="modalForm">
+            <div id="modalFields"></div>
+            <button class="primary full" type="submit">Save</button>
+        </form>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
